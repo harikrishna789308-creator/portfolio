@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--
+=====================================================================
+ T HARI KRISHNA PORTFOLIO: WHAT TO EDIT
+  - Email, GitHub, LinkedIn:  the CONFIG object at the bottom (<script>)
+  - Resume: put your PDF in the SAME folder as index.html and name it resume.pdf
+            (or change CONFIG.resumePath). Until that file exists, the Download Resume buttons will not work.
+  - Profile photo: set CONFIG.profileImage to a file name like "me.jpg". If empty, the THK avatar is shown.
+  - Project links: set github / demo in CONFIG.projects. Empty ("") shows a non-clickable "Coming Soon" label.
+  - School name and year: edit the "Earlier Education" entry in CONFIG.timeline.
+=====================================================================
+-->
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>T Hari Krishna | B.Tech AIML Student Portfolio</title>
+<meta name="description" content="Portfolio of T Hari Krishna, a second-year B.Tech AIML student at Sandip University and aspiring software developer.">
+<!-- Google Fonts: typography only; system fonts are used if offline. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ---------- Theme colors (edit here) ---------- */
+:root{
+  --bg:#0b0f1e; --bg2:#121830; --card:rgba(255,255,255,.06); --border:rgba(255,255,255,.12);
+  --text:#e9ecf8; --muted:#a6aecb; --blue:#4f8cff; --purple:#9b6bff; --on:#fff;
+  --grad:linear-gradient(135deg,var(--blue),var(--purple));
+  --radius:16px; --shadow:0 12px 36px rgba(0,0,0,.35); --font:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
+}
+:root[data-theme="light"]{
+  --bg:#f4f6fd; --bg2:#e8ecfa; --card:rgba(255,255,255,.8); --border:rgba(30,40,90,.14);
+  --text:#171d36; --muted:#4a5476; --blue:#2458d8; --purple:#6b3fd1; --shadow:0 12px 30px rgba(40,60,120,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;transition:background .3s,color .3s}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(60vw 45vh at 90% -5%,color-mix(in srgb,var(--purple) 25%,transparent),transparent),radial-gradient(55vw 45vh at -5% 55%,color-mix(in srgb,var(--blue) 20%,transparent),transparent)}
+h1,h2,h3{line-height:1.2}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.container{width:min(1100px,92%);margin-inline:auto}
+section{padding:clamp(3.5rem,8vw,6rem) 0}
+.title{font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:.5rem}
+.sub{color:var(--muted);margin-bottom:2rem;max-width:62ch}
+.glass{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.4rem;border-radius:999px;border:1px solid var(--border);font:600 .95rem var(--font);cursor:pointer;color:var(--text);background:transparent;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(79,140,255,.28)}
+.btn.primary{background:var(--grad);color:var(--on);border-color:transparent}
+.btn.small{padding:.45rem 1rem;font-size:.85rem}
+.soon{display:inline-flex;padding:.45rem 1rem;font-size:.85rem;border-radius:999px;border:1px dashed var(--border);color:var(--muted);cursor:default}
+/* Navbar */
+header{position:fixed;inset:0 0 auto;z-index:50;background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:1.4rem;letter-spacing:1px}
+.nav-links{display:none;list-style:none;gap:1.2rem;align-items:center}
+.nav-links a.link{color:var(--muted);font-size:.92rem;font-weight:500;padding:.3rem 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav-links a.link:hover,.nav-links a.link.active{color:var(--text);border-color:var(--purple)}
+.nav-actions{display:flex;gap:.6rem}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer;font-size:1.1rem}
+@media(max-width:959px){.nav-links{position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:1.2rem;background:var(--bg2);border-bottom:1px solid var(--border);display:none}.nav-links.open{display:flex}}
+@media(min-width:960px){.nav-links{display:flex}#burger{display:none}}
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:110px}
+.hero-grid{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:860px){.hero-grid{grid-template-columns:1.3fr .8fr}}
+.hero h1{font-size:clamp(2.3rem,6vw,3.8rem);letter-spacing:-.02em}
+.headline{font-weight:600;font-size:clamp(1rem,2.4vw,1.3rem);color:var(--blue);margin:.6rem 0 .3rem}
+.uni{color:var(--muted);font-size:.95rem}
+.typing{margin:.9rem 0;font-size:1.15rem;color:var(--muted)}
+.typing b{color:var(--text)}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--purple);vertical-align:middle;margin-left:3px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.intro{color:var(--muted);max-width:60ch;margin-bottom:1.6rem}
+.row{display:flex;flex-wrap:wrap;gap:.8rem}
+.socials{margin-top:1.5rem}
+.socials a{padding:.45rem .9rem;border:1px solid var(--border);border-radius:999px;font-size:.88rem;color:var(--muted);transition:color .2s,border-color .2s}
+.socials a:hover{color:var(--text);border-color:var(--purple)}
+.avatar{justify-self:center;width:min(300px,70vw);aspect-ratio:1;border-radius:50%;padding:6px;background:var(--grad);box-shadow:0 0 60px color-mix(in srgb,var(--purple) 40%,transparent)}
+.avatar-in{width:100%;height:100%;border-radius:50%;background:var(--bg2);display:grid;place-items:center;overflow:hidden;font-weight:800;font-size:4.2rem;letter-spacing:2px}
+.avatar-in img{width:100%;height:100%;object-fit:cover}
+/* About */
+.about p{color:var(--muted);max-width:75ch;font-size:1.03rem}
+.info{display:grid;gap:1rem;margin-top:2rem}
+@media(min-width:700px){.info{grid-template-columns:repeat(3,1fr)}}
+.info div{padding:1.2rem}
+.info small{color:var(--muted);display:block}
+.info strong{font-size:1.1rem}
+/* Skills */
+.skills{display:grid;gap:1.1rem;margin-top:2rem}
+@media(min-width:600px){.skills{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.skills{grid-template-columns:repeat(3,1fr)}}
+.skill{padding:1.3rem;display:flex;gap:1rem;align-items:center;transition:transform .25s,border-color .25s}
+.skill:hover{transform:translateY(-4px);border-color:var(--purple)}
+.skill .ic{width:46px;height:46px;border-radius:12px;background:var(--grad);display:grid;place-items:center;font-weight:800;color:#fff;font-size:.9rem;flex:none}
+.skill .lv{font-size:.82rem;color:var(--muted)}
+/* Projects */
+.filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem}
+.filters .btn[aria-pressed="true"]{background:var(--grad);color:#fff;border-color:transparent}
+.grid{display:grid;gap:1.2rem}
+@media(min-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+.proj{overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.proj:hover{transform:translateY(-4px);border-color:var(--purple)}
+.proj.hide{display:none}
+.thumb{height:130px;display:grid;place-items:center;font-size:2.6rem;font-weight:800;color:#fff}
+.pb{padding:1.3rem;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.pb p{color:var(--muted);font-size:.93rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{padding:.2rem .7rem;border-radius:999px;border:1px solid var(--border);font-size:.8rem;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:auto}
+dialog{margin:auto;max-width:min(560px,92vw);padding:1.8rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg2);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+dialog h3{margin-bottom:.6rem}dialog p,dialog li{color:var(--muted);margin-bottom:.5rem}dialog ul{padding-left:1.2rem;margin-bottom:1rem}
+dialog .note{font-size:.82rem}
+/* Education */
+.edu-text{color:var(--muted);max-width:75ch;margin-bottom:2rem}
+.timeline{border-left:2px solid var(--border);padding-left:1.6rem;display:grid;gap:1.3rem}
+.tl{padding:1.3rem;position:relative}
+.tl::before{content:"";position:absolute;left:calc(-1.6rem - 7px);top:1.6rem;width:12px;height:12px;border-radius:50%;background:var(--grad);box-shadow:0 0 0 4px var(--bg)}
+.tl small{color:var(--blue);font-weight:600}
+.tl p{color:var(--muted);font-size:.93rem}
+/* Contact */
+.cgrid{display:grid;gap:1.4rem}
+@media(min-width:860px){.cgrid{grid-template-columns:1fr 1.3fr}}
+.cinfo{padding:1.6rem;display:grid;gap:.8rem;align-content:start}
+.cinfo a{color:var(--blue);word-break:break-all}
+form{padding:1.6rem;display:grid;gap:1rem}
+label{font-weight:600;font-size:.9rem;display:block;margin-bottom:.3rem}
+input,textarea{width:100%;padding:.75rem 1rem;border-radius:12px;border:1px solid var(--border);background:var(--bg);color:var(--text);font:inherit}
+[aria-invalid="true"]{border-color:#ff6b6b}
+.err{color:#ff8a8a;font-size:.82rem;min-height:1.1em}
+[data-theme="light"] .err{color:#c0392b}
+#status{font-weight:600;min-height:1.4em}
+#status.ok{color:#3fc984}
+/* Footer */
+footer{border-top:1px solid var(--border);padding:2.5rem 0;background:var(--bg2)}
+.foot{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:center}
+.foot ul{list-style:none;display:flex;flex-wrap:wrap;gap:1rem;color:var(--muted);font-size:.9rem}
+.foot small{color:var(--muted)}
+#toTop{position:fixed;right:1.2rem;bottom:1.2rem;opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+#toTop.show{opacity:1;pointer-events:auto}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<a href="#home" style="position:absolute;left:-999px" onfocus="this.style.left='8px'" onblur="this.style.left='-999px'">Skip to content</a>
+
+<!-- ===== Navigation ===== -->
+<header>
+  <nav class="container" aria-label="Main navigation">
+    <a href="#home" class="logo grad-text" aria-label="THK, home">THK</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a class="link" href="#home">Home</a></li>
+      <li><a class="link" href="#about">About Me</a></li>
+      <li><a class="link" href="#skills">Skills</a></li>
+      <li><a class="link" href="#projects">Projects</a></li>
+      <li><a class="link" href="#education">Education</a></li>
+      <li><a class="link" href="#contact">Contact</a></li>
+      <li><a class="btn primary small" data-resume download href="resume.pdf">Download Resume</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to light theme">☀</button>
+      <button class="icon-btn" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+<!-- ===== Home ===== -->
+<section id="home" class="hero">
+  <div class="container hero-grid">
+    <div>
+      <h1>Hi, I'm <span class="grad-text">T Hari Krishna</span></h1>
+      <p class="headline">B.Tech AIML Student | Aspiring Software Developer</p>
+      <p class="uni">Sandip University &middot; 2nd Year</p>
+      <p class="typing"><b id="typed"></b><span class="caret" aria-hidden="true"></span></p>
+      <p class="intro">Hi, I'm T Hari Krishna, a second-year B.Tech student specializing in Artificial Intelligence and Machine Learning at Sandip University. I'm passionate about programming, web development, and exploring how technology can solve real-world problems. I'm continuously learning new skills and building small projects to improve my technical knowledge.</p>
+      <div class="row">
+        <a href="#projects" class="btn primary">View My Projects</a>
+        <a href="#contact" class="btn">Contact Me</a>
+      </div>
+      <div class="row socials" id="heroSocials"></div>
+    </div>
+    <div class="avatar"><div class="avatar-in" id="avatar" role="img" aria-label="Avatar showing the initials THK">THK</div></div>
+  </div>
+</section>
+
+<!-- ===== About Me ===== -->
+<section id="about">
+  <div class="container about">
+    <h2 class="title reveal">About Me</h2>
+    <p class="reveal">My name is T Hari Krishna, and I am currently pursuing my second year of B.Tech in Artificial Intelligence and Machine Learning at Sandip University. I am interested in programming, web development, and learning how artificial intelligence can solve real-world problems. I am building my foundation in Python, HTML, CSS, and SQL through regular practice and small academic projects. I enjoy exploring new technologies, understanding how applications work, and improving my problem-solving skills. As a student, I believe in learning step by step and applying theoretical knowledge through practical work. My goal is to become a skilled software developer and continue growing in the fields of AI and machine learning.</p>
+    <div class="info">
+      <div class="glass reveal"><small>Current Education</small><strong>B.Tech AIML</strong></div>
+      <div class="glass reveal"><small>Current Year</small><strong>Second Year</strong></div>
+      <div class="glass reveal"><small>University</small><strong>Sandip University</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Skills ===== -->
+<section id="skills">
+  <div class="container">
+    <h2 class="title reveal">My Technical Skills</h2>
+    <p class="sub reveal">Building my programming and development skills step by step.</p>
+    <p class="reveal" style="color:var(--muted);max-width:75ch">I am developing my programming skills through regular practice and academic projects. I have basic knowledge of Python and use it to understand programming logic and solve simple problems. I am learning SQL to work with databases and understand how data is stored and retrieved. I know the fundamentals of HTML for creating webpage structures and CSS for styling and designing responsive layouts. I am continuing to improve these skills through hands-on practice as part of my B.Tech AIML journey.</p>
+    <div class="skills" id="skillGrid"></div>
+  </div>
+</section>
+
+<!-- ===== Projects ===== -->
+<section id="projects">
+  <div class="container">
+    <h2 class="title reveal">My Projects</h2>
+    <p class="sub reveal">Small projects created to practice programming and apply classroom concepts.</p>
+    <div class="filters" id="filters" role="group" aria-label="Filter projects"></div>
+    <div class="grid" id="projGrid"></div>
+  </div>
+</section>
+<dialog id="dlg" aria-labelledby="dTitle">
+  <h3 id="dTitle"></h3><p id="dDesc"></p>
+  <ul id="dList"></ul>
+  <p class="note">Project idea shown as an editable entry. Update its status and links once the project is built.</p>
+  <button class="btn primary small" id="dClose" type="button">Close</button>
+</dialog>
+
+<!-- ===== Education ===== -->
+<section id="education">
+  <div class="container">
+    <h2 class="title reveal">My Education Journey</h2>
+    <p class="edu-text reveal">My educational journey began with my early school education, where I developed my interest in learning and technology. After completing my school studies, I continued my education by choosing a technical field that would help me understand computers and modern technologies. I am currently pursuing my second year of Bachelor of Technology (B.Tech) in Artificial Intelligence and Machine Learning at Sandip University. During my first year, I began building my foundation in engineering subjects, programming, and computer science concepts. Now, in my second year, I am continuing to strengthen my programming fundamentals, explore AIML concepts, and work on small practical projects. My aim is to improve my technical knowledge and prepare myself for future opportunities in software development and artificial intelligence.</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- ===== Contact =====
+ This form is validated in the browser only; a static page cannot send email.
+ To receive real messages later, connect a form service (Formspree, Web3Forms or EmailJS) by pointing the form
+ to the service's endpoint or using its script, or build a backend. Until then, nothing is delivered. -->
+<section id="contact">
+  <div class="container">
+    <h2 class="title reveal">Let's Connect</h2>
+    <p class="sub reveal">I'm always interested in learning, sharing ideas, and connecting with people who enjoy technology.</p>
+    <div class="cgrid">
+      <div class="glass cinfo reveal">
+        <h3>T Hari Krishna</h3>
+        <a id="mailLink" href="mailto:your.email@example.com">your.email@example.com</a>
+        <a id="ghLink" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+        <a id="liLink" href="https://www.linkedin.com/in/your-username" target="_blank" rel="noopener">LinkedIn</a>
+        <!-- Resume: place resume.pdf beside index.html for this link to work -->
+        <a class="btn primary small" data-resume download href="resume.pdf" style="color:#fff;justify-self:start">Download Resume</a>
+      </div>
+      <form class="glass reveal" id="form" novalidate>
+        <div><label for="fName">Full name</label><input id="fName" autocomplete="name" required><div class="err" id="eName"></div></div>
+        <div><label for="fEmail">Email</label><input id="fEmail" type="email" autocomplete="email" required><div class="err" id="eEmail"></div></div>
+        <div><label for="fSub">Subject</label><input id="fSub" required><div class="err" id="eSub"></div></div>
+        <div><label for="fMsg">Message</label><textarea id="fMsg" rows="5" required></textarea><div class="err" id="eMsg"></div></div>
+        <button class="btn primary" type="submit">Send Message</button>
+        <div id="status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="container foot">
+    <div><a href="#home" class="logo grad-text">THK</a><br><strong>T Hari Krishna</strong><br><small>B.Tech AIML Student at Sandip University</small><br><small>&copy; <span id="year"></span> T Hari Krishna</small></div>
+    <ul><li><a href="#home">Home</a></li><li><a href="#about">About Me</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li></ul>
+    <div class="row socials" id="footSocials" style="margin:0"></div>
+  </div>
+</footer>
+<button class="icon-btn" id="toTop" type="button" aria-label="Back to top">↑</button>
+
+<script>
+/* ===== CONFIG: edit your details here ===== */
+const CONFIG = {
+  email: "your.email@example.com",                    // TODO: add your real email
+  github: "https://github.com/your-username",         // TODO: add your real GitHub URL
+  linkedin: "https://www.linkedin.com/in/your-username", // TODO: add your real LinkedIn URL
+  resumePath: "resume.pdf",                           // put the PDF beside index.html
+  profileImage: "",                                   // e.g. "me.jpg"; empty keeps the THK avatar
+  roles: ["AIML Student", "Aspiring Software Developer", "Python Learner", "Web Development Enthusiast"],
+  skills: [ // Levels are labels only, not scores
+    ["Py", "Python", "Basic"], ["SQL", "SQL", "Basic"], ["H5", "HTML5", "Basic"],
+    ["C3", "CSS3", "Basic"], ["JS", "JavaScript", "Beginner / Learning"], ["Git", "Git and GitHub", "Beginner / Learning"]
+  ],
+  filters: ["All", "Web Development", "Python", "Database"],
+  projects: [ // github / demo: "" shows a non-clickable "Coming Soon"
+    { icon: "</>", title: "Personal Portfolio Website", cat: ["Web Development"], tech: ["HTML", "CSS", "JavaScript"], colors: "#4f8cff,#9b6bff", github: "", demo: "",
+      desc: "A personal portfolio website created using HTML and CSS to introduce myself, display my technical skills, present my projects, and provide contact information.",
+      features: ["Personal introduction", "Skills and project sections", "Responsive page layout", "Contact information"] },
+    { icon: "◉–◉", title: "Student Relationship Analyzer", cat: ["Python"], tech: ["Python", "Basic Graph Concepts"], colors: "#7b5cff,#d05ce3", github: "", demo: "",
+      desc: "A student-level academic project that represents relationships between students using a graph and helps explore how students are connected.",
+      features: ["Add student names and relationships", "Represent students as nodes and relationships as edges", "Explore direct connections", "Display a simple relationship summary"] },
+    { icon: "🍴", title: "Restaurant Food Ordering Website", cat: ["Web Development"], tech: ["HTML", "CSS", "JavaScript"], colors: "#2f7bff,#17b5c9", github: "", demo: "",
+      desc: "A basic restaurant website that displays food items and allows users to explore a menu and practice a simple frontend ordering workflow.",
+      features: ["Restaurant home page", "Food menu with prices", "Search and category filtering", "Simple cart and order summary"] },
+    { icon: "▤", title: "Student Marks Management System", cat: ["Python", "Database"], tech: ["Python", "SQL"], colors: "#5b5ce6,#3aa0ff", github: "", demo: "",
+      desc: "A basic student marks management project designed to practice storing student details, calculating marks, and displaying academic results.",
+      features: ["Store student names and marks", "Calculate total and average marks", "Display student records", "Practice basic database operations"] }
+  ],
+  timeline: [ // Edit the Earlier Education entry with your school name and year
+    { stage: "Current Stage", title: "B.Tech in Artificial Intelligence and Machine Learning", place: "Sandip University", note: "Second Year: Currently Studying" },
+    { stage: "Previous Stage", title: "First Year of B.Tech AIML", place: "Sandip University", note: "Built foundational knowledge in engineering and programming." },
+    { stage: "Earlier Education", title: "School Education", place: "School name to be added", note: "Institution and completion year to be added." }
+  ]
+};
+
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const el = (t, c, h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Build page from CONFIG ---------- */
+$$("[data-resume]").forEach(a => a.href = CONFIG.resumePath);
+[["GitHub", CONFIG.github], ["LinkedIn", CONFIG.linkedin], ["Email", "mailto:" + CONFIG.email]].forEach(([t, h]) =>
+  ["#heroSocials", "#footSocials"].forEach(id => {
+    const a = el("a", "", t); a.href = h; a.setAttribute("aria-label", t); if (!h.startsWith("mailto")) { a.target = "_blank"; a.rel = "noopener"; } $(id).append(a);
+  }));
+$("#mailLink").href = "mailto:" + CONFIG.email; $("#mailLink").textContent = CONFIG.email;
+$("#ghLink").href = CONFIG.github; $("#liLink").href = CONFIG.linkedin;
+if (CONFIG.profileImage) { // falls back to the THK avatar if the image fails to load
+  const img = new Image(); img.alt = "Portrait of T Hari Krishna"; img.src = CONFIG.profileImage;
+  img.onload = () => { $("#avatar").textContent = ""; $("#avatar").append(img); };
+}
+CONFIG.skills.forEach(([ic, n, lv]) => $("#skillGrid").append(el("div", "glass skill reveal", `<div class="ic" aria-hidden="true">${esc(ic)}</div><div><strong>${esc(n)}</strong><div class="lv">${esc(lv)}</div></div>`)));
+CONFIG.timeline.forEach(t => $("#timeline").append(el("div", "glass tl reveal", `<small>${esc(t.stage)}</small><h3>${esc(t.title)}</h3><div>${esc(t.place)}</div><p>${esc(t.note)}</p>`)));
+$("#year").textContent = new Date().getFullYear();
+
+/* Projects + filters */
+const linkOrSoon = (label, url) => url ? `<a class="btn small" href="${esc(url)}" target="_blank" rel="noopener">${label}</a>` : `<span class="soon" aria-label="${label} link coming soon">${label}: Coming Soon</span>`;
+CONFIG.projects.forEach((p, i) => {
+  const [c1, c2] = p.colors.split(",");
+  const card = el("article", "glass proj reveal", `
+    <div class="thumb" style="background:linear-gradient(135deg,${c1},${c2})" aria-hidden="true">${esc(p.icon)}</div>
+    <div class="pb"><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p>
+    <div class="tags">${p.tech.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+    <div class="links"><button class="btn small primary" type="button" data-i="${i}">View Details</button>${linkOrSoon("GitHub", p.github)}${linkOrSoon("Live Demo", p.demo)}</div></div>`);
+  card.dataset.cat = p.cat.join("|"); $("#projGrid").append(card);
+});
+CONFIG.filters.forEach((f, i) => {
+  const b = el("button", "btn small", esc(f)); b.type = "button"; b.setAttribute("aria-pressed", i === 0);
+  b.onclick = () => {
+    $$("#filters .btn").forEach(x => x.setAttribute("aria-pressed", x === b));
+    $$(".proj").forEach(c => c.classList.toggle("hide", f !== "All" && !c.dataset.cat.split("|").includes(f)));
+  };
+  $("#filters").append(b);
+});
+const dlg = $("#dlg");
+$("#projGrid").addEventListener("click", e => {
+  const b = e.target.closest("button[data-i]"); if (!b) return;
+  const p = CONFIG.projects[b.dataset.i];
+  $("#dTitle").textContent = p.title; $("#dDesc").textContent = p.desc;
+  $("#dList").innerHTML = p.features.map(f => `<li>${esc(f)}</li>`).join("");
+  dlg.showModal();
+});
+$("#dClose").onclick = () => dlg.close();
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+
+/* ---------- Typing animation ---------- */
+(function () {
+  const out = $("#typed"); if (reduce) { out.textContent = CONFIG.roles[0]; return; }
+  let r = 0, c = 0, del = false;
+  (function tick() {
+    const w = CONFIG.roles[r]; out.textContent = w.slice(0, c);
+    if (!del && c === w.length) { del = true; return setTimeout(tick, 1400); }
+    if (del && c === 0) { del = false; r = (r + 1) % CONFIG.roles.length; }
+    c += del ? -1 : 1; setTimeout(tick, del ? 40 : 85);
+  })();
+})();
+
+/* ---------- Mobile menu (closes after choosing a link or pressing Escape) ---------- */
+const burger = $("#burger"), links = $("#navLinks");
+const setMenu = o => { links.classList.toggle("open", o); burger.setAttribute("aria-expanded", o); burger.setAttribute("aria-label", o ? "Close menu" : "Open menu"); burger.textContent = o ? "✕" : "☰"; };
+burger.onclick = () => setMenu(!links.classList.contains("open"));
+links.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+
+/* ---------- Theme toggle ---------- */
+const root = document.documentElement, tb = $("#themeToggle");
+const setTheme = t => { root.dataset.theme = t; tb.textContent = t === "dark" ? "☀" : "☾"; tb.setAttribute("aria-label", "Switch to " + (t === "dark" ? "light" : "dark") + " theme"); try { localStorage.setItem("theme", t); } catch (e) {} };
+let saved = null; try { saved = localStorage.getItem("theme"); } catch (e) {}
+setTheme(saved || "dark");
+tb.onclick = () => setTheme(root.dataset.theme === "dark" ? "light" : "dark");
+
+/* ---------- Active nav link + scroll reveal ---------- */
+const navA = $$(".nav-links a.link");
+const spy = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) navA.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-45% 0px -50% 0px" });
+$$("main section[id]").forEach(s => spy.observe(s));
+const rev = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); rev.unobserve(e.target); } }), { threshold: .12 });
+$$(".reveal").forEach(r => rev.observe(r));
+
+/* ---------- Back to top ---------- */
+const topBtn = $("#toTop");
+addEventListener("scroll", () => topBtn.classList.toggle("show", scrollY > 600), { passive: true });
+topBtn.onclick = () => scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+
+/* ---------- Contact form validation (front-end only; nothing is sent) ---------- */
+const rules = [
+  ["fName", "eName", v => v.trim().length >= 2 || "Enter your full name (at least 2 characters)."],
+  ["fEmail", "eEmail", v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || "Enter a valid email, like name@example.com."],
+  ["fSub", "eSub", v => v.trim().length >= 3 || "Enter a subject (at least 3 characters)."],
+  ["fMsg", "eMsg", v => v.trim().length >= 10 || "Write a message of at least 10 characters."]
+];
+function check([i, e, fn]) {
+  const inp = $("#" + i), r = fn(inp.value), bad = r !== true;
+  $("#" + e).textContent = bad ? r : ""; inp.setAttribute("aria-invalid", bad); inp.setAttribute("aria-describedby", e); return !bad;
+}
+rules.forEach(r => $("#" + r[0]).addEventListener("blur", () => check(r)));
+$("#form").addEventListener("submit", e => {
+  e.preventDefault(); const st = $("#status"); st.className = "";
+  const res = rules.map(check);
+  if (res.includes(false)) { st.textContent = "Please fix the highlighted fields."; $("#" + rules[res.indexOf(false)][0]).focus(); return; }
+  st.textContent = "Your details look good, but this demo does not send email yet. Please use the email link to reach me.";
+  st.className = "ok"; e.target.reset();
+});
+</script>
+</body>
+</html>
